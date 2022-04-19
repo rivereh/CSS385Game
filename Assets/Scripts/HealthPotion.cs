@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Manapotion : MonoBehaviour
+public class HealthPotion : MonoBehaviour
 {
-    [SerializeField] int manaToAdd = 25;
+    [SerializeField] int healthToAdd = 25;
 
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.transform.tag == "Player")
         {   
             PlayerController pc = other.transform.GetComponent<PlayerController>();
-            pc.AddMana(manaToAdd);
+            pc.AddHealth(healthToAdd);
             Destroy(gameObject);
         }
     }
