@@ -217,9 +217,9 @@ GameObject:
   - component: {fileID: 1062325000}
   - component: {fileID: 1062324999}
   - component: {fileID: 1062324998}
+  - component: {fileID: 1062324995}
   - component: {fileID: 1062324997}
   - component: {fileID: 1062324996}
-  - component: {fileID: 1062324995}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -239,6 +239,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e76aadd14fc6144930886cb500e41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walkSpeed: 4
+  runSpeed: 5
+  jumpForce: 10
+  powerFX: {fileID: 4094343511346605532, guid: 96ef2d9b233767f4f8a2744fe3033418, type: 3}
 --- !u!50 &1062324996
 Rigidbody2D:
   serializedVersion: 4
