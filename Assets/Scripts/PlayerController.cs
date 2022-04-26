@@ -21,10 +21,14 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     Animator anim;
 
+    PlayerStats stats;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        stats = GetComponent<PlayerStats>();
+        anim.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animation/Player/Player_Sword/Player_Sword_Defence" + stats.defence);
     }
 
     void Update()
@@ -66,9 +70,15 @@ public class PlayerController : MonoBehaviour
                 Destroy(fx, 0.3f);
             }
 
-            // for testing damage
+            // testing keys
             if (Input.GetKeyDown(KeyCode.F))
                 TakeDamage(25);
+
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                stats.IncreaseDefence();
+                anim.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animation/Player/Player_Sword/Player_Sword_Defence" + stats.defence);
+            }
 
         }
 
