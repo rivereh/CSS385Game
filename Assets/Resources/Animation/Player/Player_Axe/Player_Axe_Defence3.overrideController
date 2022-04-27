@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Player_Axe_Defence3
+  m_Controller: {fileID: 9100000, guid: ec279e6b441002f4f82f5df9acea60c2, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 1cf7e7da8ae75954e8c62c572b5423fc, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e57c62a5ae12e8f458efef794be66eec, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a5605c95383f77c41a8dc0a6cbf85640, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ef9ae859927204144a96bc94f2fed137, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e68724f5a96649649bfc6d7322dac977, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9ffa699600464eb45bb517015c1bc6dc, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9eb634c203b8f3c4bb6c0bf0202798c2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: de85962017de7584689a7b7c0ce62fed, type: 2}

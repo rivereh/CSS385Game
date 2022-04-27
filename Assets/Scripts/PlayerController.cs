@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         stats = GetComponent<PlayerStats>();
-        anim.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animation/Player/Player_Sword/Player_Sword_Defence" + stats.defence);
+        UpdateAnimatorController();
     }
 
     void Update()
@@ -74,10 +74,34 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))
                 TakeDamage(25);
 
-            if (Input.GetKeyDown(KeyCode.B))
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 stats.IncreaseDefence();
-                anim.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animation/Player/Player_Sword/Player_Sword_Defence" + stats.defence);
+                UpdateAnimatorController();
+            }
+
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                stats.DecreaseDefence();
+                UpdateAnimatorController();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                stats.weapon = PlayerStats.Weapon.Sword;
+                UpdateAnimatorController();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                stats.weapon = PlayerStats.Weapon.Axe;
+                UpdateAnimatorController();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                stats.weapon = PlayerStats.Weapon.Scepter;
+                UpdateAnimatorController();
             }
 
         }
@@ -103,6 +127,11 @@ public class PlayerController : MonoBehaviour
 
         float healthbarRatio = (float)health / (float)100;
         healthbar.localScale = Vector3.Lerp(healthbar.localScale, new Vector3(healthbarRatio, 1, 1), Time.deltaTime * 8f);
+    }
+
+    void UpdateAnimatorController()
+    {
+        anim.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animation/Player/Player_" + stats.weapon + "/Player_" + stats.weapon + "_Defence" + stats.defence);
     }
 
     public void AddMana(int manaToAdd)
