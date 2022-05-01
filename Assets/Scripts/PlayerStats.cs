@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+
+    public int coins = 0;
+
     [Range(0,4)]
     public int defence = 0;
 
@@ -32,6 +35,11 @@ public class PlayerStats : MonoBehaviour
         if (defence <= 0)
             return;
         defence--;
+    }
+
+    public void AddCoins(int coinsToAdd)
+    {
+        coins += coinsToAdd;
     }
 
 }

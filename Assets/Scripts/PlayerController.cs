@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -12,6 +13,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject powerFX;
     [SerializeField] Transform manabar;
     [SerializeField] Transform healthbar;
+    public TextMeshProUGUI coinsText;
+
+    [SerializeField] Transform hitBox;
+    [SerializeField] LayerMask hit_LayerMask;
 
     public int mana = 100;
     public int health = 100;
@@ -55,13 +60,41 @@ public class PlayerController : MonoBehaviour
                 gameObject.transform.localScale = new Vector3(-1, 1, 1);
 
             anim.SetBool("Input", input != 0);
-            anim.SetBool("Attack", Input.GetMouseButton(0) || (Input.GetMouseButton(1) && canSpecial && input == 0));
+            anim.SetBool("Attack", Input.GetMouseButtonDown(0) || (Input.GetMouseButtonDown(1) && canSpecial && input == 0));
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                // apply damage
+                Collider[] hitColliders = Physics.OverlapBox(hitBox.position, hitBox.localScale / 4, Quaternion.identity, hit_LayerMask);
+                int i = 0;
+                //Check when there is a new collider coming into contact with the box
+                while (i < hitColliders.Length)
+                {
+                    if(hitColliders[i].gameObject.GetComponentInParent<Skeleton>())
+                        hitColliders[i].gameObject.GetComponentInParent<Skeleton>().TakeDamage(10);
+
+                    i++;
+                }
+            }
 
             // power attack TODO: only allow to attack based on having enough mana
             if (Input.GetMouseButtonDown(1) && mana > 0 && input == 0)
             {
                 // handle mana and manabar
                 mana -= 25;
+
+                // apply damage
+                Collider[] hitColliders = Physics.OverlapBox(hitBox.position, hitBox.localScale / 4, Quaternion.identity, hit_LayerMask);
+                int i = 0;
+                //Check when there is a new collider coming into contact with the box
+                while (i < hitColliders.Length)
+                {
+                    if(hitColliders[i].gameObject.GetComponentInParent<Skeleton>())
+                        hitColliders[i].gameObject.GetComponentInParent<Skeleton>().TakeDamage(25);
+
+                    i++;
+                }
+
 
                 // spawn FX
                 Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y - 0.5f, 0);
@@ -73,6 +106,11 @@ public class PlayerController : MonoBehaviour
             // testing keys
             if (Input.GetKeyDown(KeyCode.F))
                 TakeDamage(25);
+
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                stats.AddCoins(25);
+            }
 
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
@@ -127,6 +165,8 @@ public class PlayerController : MonoBehaviour
 
         float healthbarRatio = (float)health / (float)100;
         healthbar.localScale = Vector3.Lerp(healthbar.localScale, new Vector3(healthbarRatio, 1, 1), Time.deltaTime * 8f);
+
+        coinsText.text = "Coins: " + stats.coins;
     }
 
     void UpdateAnimatorController()
@@ -155,5 +195,13 @@ public class PlayerController : MonoBehaviour
     {
         dead = true;
         anim.SetTrigger("Die");
+    }
+
+    //Draw the Box Overlap as a gizmo to show where it currently is testing.
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
+        Gizmos.DrawWireCube(hitBox.position, hitBox.localScale);
     }
 }

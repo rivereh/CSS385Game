@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Skeleton : MonoBehaviour
 {
+
+    public int health = 100;
     public int attackDistance;
     public int moveSpeed;
     public float timer;
     public GameObject agroZone;
     public GameObject triggerArea;
+
+    public GameObject coinPrefab;
     [HideInInspector] public bool inRange;
     [HideInInspector] public Transform target;
 
@@ -117,5 +121,16 @@ public class Skeleton : MonoBehaviour
             rotation.y = 0f;
         }
         transform.eulerAngles = rotation;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            GameObject coin = Instantiate(coinPrefab, transform.position, Quaternion.identity) as GameObject;
+            coin.GetComponent<Coin>().setValue(Random.Range(25, 50));
+            Destroy(gameObject);
+        }
     }
 }

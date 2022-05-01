@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8577560837150003291}
   - component: {fileID: 8577560837150003290}
   - component: {fileID: 8577560837150003285}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Agro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 8577560837167275749}
   - component: {fileID: 8577560837167275754}
   - component: {fileID: 8577560837167275755}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TriggerArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,13 +150,13 @@ GameObject:
   m_Component:
   - component: {fileID: 8577560837214357197}
   - component: {fileID: 8577560837214357202}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8577560837214357197
 Transform:
   m_ObjectHideFlags: 0
@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 8577560837335643049}
   - component: {fileID: 8577560837335643048}
   - component: {fileID: 8577560837335643055}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,11 +274,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83b828e43903e640af9fd0f6689c214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
   attackDistance: 1
   moveSpeed: 2
   timer: 1
   agroZone: {fileID: 8577560837150003284}
   triggerArea: {fileID: 8577560837167275748}
+  coinPrefab: {fileID: 8941869874308697654, guid: 82ec1715c879917478d001ed872ea426, type: 3}
   inRange: 0
   target: {fileID: 0}
 --- !u!1 &8577560837695155860
@@ -292,7 +294,7 @@ GameObject:
   - component: {fileID: 8577560837695155861}
   - component: {fileID: 8577560837695155867}
   - component: {fileID: 8577560837695155866}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,7 +354,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.123992264, y: -0.34412396}
+  m_Offset: {x: -0.123992264, y: -0.28}
   serializedVersion: 2
   m_Radius: 0.1948896
 --- !u!1 &8577560838134255719
@@ -365,7 +367,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8577560838134255716}
   - component: {fileID: 8577560838134255717}
-  m_Layer: 0
+  - component: {fileID: 833549093}
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,3 +440,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &833549093
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8577560838134255719}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.44094574, y: 0.79064834, z: 0.2}
+  m_Center: {x: -0.14527303, y: -0.67134255, z: 0}
