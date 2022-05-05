@@ -5,7 +5,8 @@ using UnityEngine;
 public class Skeleton : MonoBehaviour
 {
 
-    public int health = 100;
+    public int maxHealth = 100;
+    [SerializeField] int currentHealth = 100;
     public int attackDistance;
     public int moveSpeed;
     public float timer;
@@ -26,6 +27,11 @@ public class Skeleton : MonoBehaviour
     {
         intTimer = timer;
         anim = GetComponent<Animator>();
+    }
+
+    void Start()
+    {
+        currentHealth = maxHealth;
     }
 
     void Update()
@@ -125,12 +131,23 @@ public class Skeleton : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
-        if (health <= 0)
+        currentHealth -= damage;
+        anim.SetTrigger("Hurt");
+        if (currentHealth <= 0)
         {
-            GameObject coin = Instantiate(coinPrefab, transform.position, Quaternion.identity) as GameObject;
-            coin.GetComponent<Coin>().setValue(Random.Range(25, 50));
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    void Die()
+    {
+        GameObject coin = Instantiate(coinPrefab, transform.position, Quaternion.identity) as GameObject;
+        coin.GetComponent<Coin>().setValue(Random.Range(25, 50));
+        anim.SetBool("IsDead", true);
+        GetComponentInChildren<Collider2D>().enabled = false;
+        GetComponentInChildren<Rigidbody2D>().isKinematic = true;
+        GetComponentInChildren<EnemyAgro>().enabled = false;
+        this.enabled = false;
+        // Destroy(gameObject);
     }
 }

@@ -60,22 +60,23 @@ public class PlayerController : MonoBehaviour
                 gameObject.transform.localScale = new Vector3(-1, 1, 1);
 
             anim.SetBool("Input", input != 0);
-            anim.SetBool("Attack", Input.GetMouseButtonDown(0) || (Input.GetMouseButtonDown(1) && canSpecial && input == 0));
+            // anim.SetBool("Attack", Input.GetMouseButtonDown(0) || (Input.GetMouseButtonDown(1) && canSpecial && input == 0));
 
-            if (Input.GetMouseButtonDown(0))
-            {
-                // apply damage
-                Collider[] hitColliders = Physics.OverlapBox(hitBox.position, hitBox.localScale / 4, Quaternion.identity, hit_LayerMask);
-                int i = 0;
-                //Check when there is a new collider coming into contact with the box
-                while (i < hitColliders.Length)
-                {
-                    if(hitColliders[i].gameObject.GetComponentInParent<Skeleton>())
-                        hitColliders[i].gameObject.GetComponentInParent<Skeleton>().TakeDamage(10);
+            // if (Input.GetMouseButtonDown(0))
+            // {
+            //     anim.SetTrigger("Attackk");
+            //     // apply damage
+            //     Collider[] hitColliders = Physics.OverlapBox(hitBox.position, hitBox.localScale / 4, Quaternion.identity, hit_LayerMask);
+            //     int i = 0;
+            //     //Check when there is a new collider coming into contact with the box
+            //     while (i < hitColliders.Length)
+            //     {
+            //         if(hitColliders[i].gameObject.GetComponentInParent<Skeleton>())
+            //             hitColliders[i].gameObject.GetComponentInParent<Skeleton>().TakeDamage(10);
 
-                    i++;
-                }
-            }
+            //         i++;
+            //     }
+            // }
 
             // power attack TODO: only allow to attack based on having enough mana
             if (Input.GetMouseButtonDown(1) && mana > 0 && input == 0)
