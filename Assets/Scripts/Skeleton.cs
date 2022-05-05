@@ -6,6 +6,7 @@ public class Skeleton : MonoBehaviour
 {
 
     public int maxHealth = 100;
+    public int damageAmount = 25;
     [SerializeField] int currentHealth = 100;
     public int attackDistance;
     public int moveSpeed;
@@ -43,9 +44,6 @@ public class Skeleton : MonoBehaviour
 
     void Update()
     {
-
-       
-
         // player detected
         if (inRange)
         {
@@ -116,7 +114,7 @@ public class Skeleton : MonoBehaviour
 
         foreach(Collider2D collider in hitColliders)
         {
-            collider.GetComponent<PlayerController>().TakeDamage(10);
+            collider.GetComponent<PlayerController>().TakeDamage(damageAmount);
         }
     }
 

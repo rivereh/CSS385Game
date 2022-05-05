@@ -15,13 +15,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform healthbar;
     public TextMeshProUGUI coinsText;
 
-    [SerializeField] Transform hitBox;
-    [SerializeField] LayerMask hit_LayerMask;
+    // [SerializeField] Transform hitBox;
+    // [SerializeField] LayerMask hit_LayerMask;
 
     public int mana = 100;
     public int health = 100;
     bool canSpecial = true;
-    bool dead = false;
+    [HideInInspector] public bool dead = false;
     int speed;
     Rigidbody2D rb;
     Animator anim;
@@ -79,30 +79,30 @@ public class PlayerController : MonoBehaviour
             // }
 
             // power attack TODO: only allow to attack based on having enough mana
-            if (Input.GetMouseButtonDown(1) && mana > 0 && input == 0)
-            {
-                // handle mana and manabar
-                mana -= 25;
+            // if (Input.GetMouseButtonDown(1) && mana > 0 && input == 0)
+            // {
+            //     // handle mana and manabar
+            //     mana -= 25;
 
-                // apply damage
-                Collider[] hitColliders = Physics.OverlapBox(hitBox.position, hitBox.localScale / 4, Quaternion.identity, hit_LayerMask);
-                int i = 0;
-                //Check when there is a new collider coming into contact with the box
-                while (i < hitColliders.Length)
-                {
-                    if(hitColliders[i].gameObject.GetComponentInParent<Skeleton>())
-                        hitColliders[i].gameObject.GetComponentInParent<Skeleton>().TakeDamage(25);
+            //     // apply damage
+            //     Collider[] hitColliders = Physics.OverlapBox(hitBox.position, hitBox.localScale / 4, Quaternion.identity, hit_LayerMask);
+            //     int i = 0;
+            //     //Check when there is a new collider coming into contact with the box
+            //     while (i < hitColliders.Length)
+            //     {
+            //         if(hitColliders[i].gameObject.GetComponentInParent<Skeleton>())
+            //             hitColliders[i].gameObject.GetComponentInParent<Skeleton>().TakeDamage(25);
 
-                    i++;
-                }
+            //         i++;
+            //     }
 
 
-                // spawn FX
-                Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y - 0.5f, 0);
-                GameObject fx = Instantiate(powerFX, spawnPos, Quaternion.identity) as GameObject;
+            //     // spawn FX
+            //     Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y - 0.5f, 0);
+            //     GameObject fx = Instantiate(powerFX, spawnPos, Quaternion.identity) as GameObject;
                 
-                Destroy(fx, 0.3f);
-            }
+            //     Destroy(fx, 0.3f);
+            // }
 
             // testing keys
             if (Input.GetKeyDown(KeyCode.F))
@@ -189,20 +189,15 @@ public class PlayerController : MonoBehaviour
     {
         health -= damage;
         if (health <= 0)
+        {
+            health = 0;
             Die();
+        }
     }
 
     public void Die()
     {
         dead = true;
         anim.SetTrigger("Die");
-    }
-
-    //Draw the Box Overlap as a gizmo to show where it currently is testing.
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
-        Gizmos.DrawWireCube(hitBox.position, hitBox.localScale);
     }
 }
