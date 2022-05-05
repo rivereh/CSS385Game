@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     Animator anim;
 
     PlayerStats stats;
+    bool pausedGame = false;
 
     void Start()
     {
@@ -38,6 +39,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            PauseGame();
+        }
+
         if (!dead)
         {
             // adjust speed between walk and run whether shift is being held
@@ -157,6 +163,21 @@ public class PlayerController : MonoBehaviour
             mana = 100;
 
         UpdateUI();
+    }
+
+    void PauseGame()
+    {
+        pausedGame = !pausedGame;
+        if (pausedGame)
+        {
+            Time.timeScale = 0;
+            MenuManager.instance.OpenMenu("pause");
+        }
+        else
+        {
+            Time.timeScale = 1;
+            MenuManager.instance.CloseAllMenus();
+        }
     }
 
     void UpdateUI()
