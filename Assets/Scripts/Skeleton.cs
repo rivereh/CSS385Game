@@ -23,6 +23,13 @@ public class Skeleton : MonoBehaviour
     bool coolDown;
     float intTimer;
 
+
+    public Transform attackPoint;
+    public LayerMask playerLayer;
+
+    public float attackRange = 0.5f;
+
+
     void Awake()
     {
         intTimer = timer;
@@ -103,6 +110,16 @@ public class Skeleton : MonoBehaviour
         anim.SetBool("Attack", true);
     }
 
+    void SendDamage()
+    {
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
+
+        foreach(Collider2D collider in hitColliders)
+        {
+            collider.GetComponent<PlayerController>().TakeDamage(10);
+        }
+    }
+
     void StopAttack()
     {
         coolDown = false;
@@ -149,5 +166,13 @@ public class Skeleton : MonoBehaviour
         GetComponentInChildren<EnemyAgro>().enabled = false;
         this.enabled = false;
         // Destroy(gameObject);
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }
