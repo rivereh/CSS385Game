@@ -20,14 +20,13 @@ public class PlayerController : MonoBehaviour
 
     public int mana = 100;
     public int health = 100;
-    bool canSpecial = true;
+    // bool canSpecial = true;
     [HideInInspector] public bool dead = false;
     int speed;
     Rigidbody2D rb;
     Animator anim;
 
     PlayerStats stats;
-    bool pausedGame = false;
 
     void Start()
     {
@@ -40,11 +39,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            PauseGame();
-        }
-
-        if (!dead)
+        if (!dead && !MenuManager.instance.pausedGame)
         {
             // adjust speed between walk and run whether shift is being held
             speed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
@@ -154,30 +149,15 @@ public class PlayerController : MonoBehaviour
         if (health > 100)
             health = 100;
 
-        if (mana <= 0)
-            canSpecial = false;
-        else
-            canSpecial = true;
+        // if (mana <= 0)
+        //     canSpecial = false;
+        // else
+        //     canSpecial = true;
 
         if (mana > 100)
             mana = 100;
 
         UpdateUI();
-    }
-
-    void PauseGame()
-    {
-        pausedGame = !pausedGame;
-        if (pausedGame)
-        {
-            Time.timeScale = 0;
-            MenuManager.instance.OpenMenu("pause");
-        }
-        else
-        {
-            Time.timeScale = 1;
-            MenuManager.instance.CloseAllMenus();
-        }
     }
 
     void UpdateUI()

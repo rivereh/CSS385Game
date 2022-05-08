@@ -5,11 +5,34 @@ using UnityEngine;
 public class MenuManager : MonoBehaviour
 {
     public static MenuManager instance;
+    public bool pausedGame = false;
 
     [SerializeField] Menu[] menus;
 
     void Awake() {
         instance = this;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            PauseGame();
+        }
+    }
+
+    public void PauseGame()
+    {
+        pausedGame = !pausedGame;
+        if (pausedGame)
+        {
+            Time.timeScale = 0;
+            OpenMenu("pause");
+        }
+        else
+        {
+            Time.timeScale = 1;
+            CloseAllMenus();
+        }
     }
 
     public void OpenMenu(string menuName) {
