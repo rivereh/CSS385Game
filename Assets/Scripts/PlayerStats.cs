@@ -5,13 +5,25 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
 
+    public static PlayerStats instance;
+
     public int coins = 0;
 
     [Range(0,4)]
     public int defence = 0;
 
+    [HideInInspector] public int attackDamage = 10;
+
     public enum Weapon {Sword, Axe, Scepter};
     [HideInInspector] public Weapon weapon;
+
+    Animator anim;
+
+    void Awake() {
+        instance = this;
+        anim = GetComponent<Animator>();
+    }
+
 
     void Start()
     {
@@ -21,6 +33,11 @@ public class PlayerStats : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void SetAttack(int newAttack)
+    {
+        attackDamage = newAttack;
     }
 
     public void IncreaseDefence()
@@ -40,6 +57,18 @@ public class PlayerStats : MonoBehaviour
     public void AddCoins(int coinsToAdd)
     {
         coins += coinsToAdd;
+    }
+
+    public void DecreaseCoins(int coinsToAdd)
+    {
+        coins -= coinsToAdd;
+        if (coins <= 0)
+            coins = 0;
+    }
+
+    public void UpdateAnimatorController()
+    {
+        anim.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animation/Player/Player_" + weapon + "/Player_" + weapon + "_Defence" + defence);
     }
 
 }
