@@ -49,10 +49,10 @@ public class PlayerController : MonoBehaviour
             transform.position += new Vector3(input, 0, 0) * Time.deltaTime * speed;
 
             // // allow player to jump if grounded
-            // if (Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(rb.velocity.y) < 0.001f)
-            // {
-            //     rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode2D.Impulse);
-            // }
+            if (Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(rb.velocity.y) < 0.001f)
+            {
+                rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode2D.Impulse);
+            }
 
             // flip sprite based on whether they are moving left or right
             if (input > 0)
