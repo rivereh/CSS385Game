@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+<<<<<<< Updated upstream
+=======
+using TMPro;
+using UnityEngine.Events;
+>>>>>>> Stashed changes
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -12,6 +17,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject powerFX;
     [SerializeField] Transform manabar;
     [SerializeField] Transform healthbar;
+<<<<<<< Updated upstream
+=======
+    public TextMeshProUGUI coinsText;
+    [SerializeField] UnityEvent IsLanding;
+
+    // [SerializeField] Transform hitBox;
+    // [SerializeField] LayerMask hit_LayerMask;
+>>>>>>> Stashed changes
 
     public int mana = 100;
     public int health = 100;
@@ -41,6 +54,7 @@ public class PlayerController : MonoBehaviour
             // allow player to jump if grounded
             if (Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(rb.velocity.y) < 0.001f)
             {
+                anim.SetBool("Jumping", true);
                 rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode2D.Impulse);
             }
 
@@ -84,6 +98,11 @@ public class PlayerController : MonoBehaviour
             mana = 100;
 
         UpdateUI();
+    }
+
+    public void Landing ()
+    {
+        anim.SetBool("IsJumping", false);
     }
 
     void UpdateUI()
