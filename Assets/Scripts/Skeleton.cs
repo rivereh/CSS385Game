@@ -30,6 +30,8 @@ public class Skeleton : MonoBehaviour
 
     public float attackRange = 0.5f;
 
+    public event System.Action OnDeath;
+
 
     void Awake()
     {
@@ -164,6 +166,11 @@ public class Skeleton : MonoBehaviour
         GetComponentInChildren<EnemyAgro>().enabled = false;
         this.enabled = false;
         // Destroy(gameObject);
+
+        if (OnDeath != null)
+        {
+            OnDeath();
+        }
     }
 
     void OnDrawGizmosSelected()

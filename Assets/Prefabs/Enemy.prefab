@@ -145,7 +145,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.7121471, y: -0.18622291}
+  m_Offset: {x: 1.6985931, y: -0.18622291}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -156,7 +156,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.7012594, y: 0.6275542}
+  m_Size: {x: 7.820879, y: 0.6275542}
   m_EdgeRadius: 0
 --- !u!114 &8577560837167275755
 MonoBehaviour:
@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  damageAmount: 25
   currentHealth: 100
   attackDistance: 1
   moveSpeed: 2
@@ -273,7 +274,7 @@ MonoBehaviour:
   attackPoint: {fileID: 2072921188123913726}
   playerLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 512
   attackRange: 0.32
 --- !u!1 &8577560837695155860
 GameObject:

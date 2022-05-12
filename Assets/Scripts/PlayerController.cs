@@ -105,6 +105,12 @@ public class PlayerController : MonoBehaviour
             //     Destroy(fx, 0.3f);
             // }
 
+            
+            if (Input.GetKeyDown(KeyCode.S))
+                gameObject.layer = 8;
+            if (Input.GetKeyUp(KeyCode.S))
+                gameObject.layer = 9;
+
             // testing keys
             if (Input.GetKeyDown(KeyCode.F))
                 TakeDamage(25);
@@ -200,5 +206,6 @@ public class PlayerController : MonoBehaviour
     {
         dead = true;
         anim.SetTrigger("Die");
+        GetComponent<PlayerCombat>().enabled = false;
     }
 }
