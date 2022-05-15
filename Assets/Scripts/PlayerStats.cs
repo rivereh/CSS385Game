@@ -12,7 +12,7 @@ public class PlayerStats : MonoBehaviour
     [Range(0,4)]
     public int defence = 0;
 
-    [HideInInspector] public int attackDamage = 10;
+    [HideInInspector] public int attackDamage = 20;
 
     public enum Weapon {Sword, Axe, Scepter};
     [HideInInspector] public Weapon weapon;

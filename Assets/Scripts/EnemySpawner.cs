@@ -17,8 +17,8 @@ public class EnemySpawner : MonoBehaviour
     float nextSpawnTime;
     Transform floorSpawn;
 
-    public int maxXSpawn = 0;
-    public int minXSpawn = 0;
+    public float maxXSpawn = 0;
+    public float minXSpawn = 0;
 
     void Start()
     {
@@ -34,7 +34,7 @@ public class EnemySpawner : MonoBehaviour
             enemiesRemainingToSpawn--;
             nextSpawnTime = Time.time + currentFloor.timeBetweenSpawns;
 
-            int spawnPosX = Random.Range(minXSpawn, maxXSpawn);
+            float spawnPosX = Random.Range(minXSpawn, maxXSpawn);
             Vector3 spawnPos = new Vector3(spawnPosX, floorSpawn.position.y, 0);
 
             Skeleton spawnedEnemy = Instantiate(enemy, spawnPos, Quaternion.identity) as Skeleton;

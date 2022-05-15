@@ -52,7 +52,7 @@ public class WeaponMerchant : MonoBehaviour
             axeText.text = "Bought";
             axeButton.interactable = false;
             PlayerStats.instance.UpdateAnimatorController();
-            PlayerStats.instance.SetAttack(20);
+            PlayerStats.instance.SetAttack(30);
         }
     }
 

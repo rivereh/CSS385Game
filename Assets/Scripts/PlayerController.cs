@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
                 gameObject.transform.localScale = new Vector3(-1, 1, 1);
 
             anim.SetBool("Input", input != 0);
+           
             // anim.SetBool("Attack", Input.GetMouseButtonDown(0) || (Input.GetMouseButtonDown(1) && canSpecial && input == 0));
 
             // if (Input.GetMouseButtonDown(0))
@@ -104,53 +105,12 @@ public class PlayerController : MonoBehaviour
                 
             //     Destroy(fx, 0.3f);
             // }
-
-            
-            if (Input.GetKeyDown(KeyCode.S))
-                gameObject.layer = 8;
-            if (Input.GetKeyUp(KeyCode.S))
-                gameObject.layer = 9;
-
-            // testing keys
-            if (Input.GetKeyDown(KeyCode.F))
-                TakeDamage(25);
-
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                stats.AddCoins(25);
-            }
-
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                stats.IncreaseDefence();
-                UpdateAnimatorController();
-            }
-
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                stats.DecreaseDefence();
-                UpdateAnimatorController();
-            }
-
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                stats.weapon = PlayerStats.Weapon.Sword;
-                UpdateAnimatorController();
-            }
-
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                stats.weapon = PlayerStats.Weapon.Axe;
-                UpdateAnimatorController();
-            }
-
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                stats.weapon = PlayerStats.Weapon.Scepter;
-                UpdateAnimatorController();
-            }
-
         }
+
+        if (Input.GetKeyDown(KeyCode.S))
+                gameObject.layer = 8;
+        if (Input.GetKeyUp(KeyCode.S))
+            gameObject.layer = 9;
 
         if (health > 100)
             health = 100;
