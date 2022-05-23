@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
 
     public static EnemySpawner instance;
     public Floor[] floors;
-    public Skeleton enemy;
+    public Enemy enemy;
 
     Floor currentFloor;
     int currentFloorNumber;
@@ -37,7 +37,7 @@ public class EnemySpawner : MonoBehaviour
             float spawnPosX = Random.Range(minXSpawn, maxXSpawn);
             Vector3 spawnPos = new Vector3(spawnPosX, floorSpawn.position.y, 0);
 
-            Skeleton spawnedEnemy = Instantiate(enemy, spawnPos, Quaternion.identity) as Skeleton;
+            Enemy spawnedEnemy = Instantiate(enemy, spawnPos, Quaternion.identity) as Enemy;
             spawnedEnemy.OnDeath += OnEnemyDeath;
         }
     }

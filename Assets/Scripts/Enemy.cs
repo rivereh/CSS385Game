@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skeleton : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
 
     public int maxHealth = 100;
     public int damageAmount = 25;
     [SerializeField] int currentHealth = 100;
-    public int attackDistance;
+    public float attackDistance;
     public int moveSpeed;
     public float timer;
     public GameObject agroZone;

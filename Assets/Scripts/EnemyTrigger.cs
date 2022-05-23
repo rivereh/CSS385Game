@@ -5,11 +5,11 @@ using UnityEngine;
 public class EnemyTrigger : MonoBehaviour
 {
 
-    Skeleton enemyParent;
+    Enemy enemyParent;
 
     void Awake()
     {
-        enemyParent = GetComponentInParent<Skeleton>();
+        enemyParent = GetComponentInParent<Enemy>();
     }
 
     void OnTriggerEnter2D(Collider2D other)

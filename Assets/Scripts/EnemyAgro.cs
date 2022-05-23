@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class EnemyAgro : MonoBehaviour
 {
-    Skeleton enemyParent;
+    Enemy enemyParent;
     bool inRange;
     Animator anim;
 
     void Awake()
     {
-        enemyParent = GetComponentInParent<Skeleton>();
+        enemyParent = GetComponentInParent<Enemy>();
         anim = GetComponentInParent<Animator>();
     }
 
