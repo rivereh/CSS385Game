@@ -526,7 +526,7 @@ RectTransform:
   m_Children:
   - {fileID: 401352413}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1057,7 +1057,7 @@ Transform:
   - {fileID: 1791032805}
   - {fileID: 757571839}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &757571838
 GameObject:
@@ -3954,9 +3954,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6028103518791324468, guid: 031299d315e14624a8000a02429474bf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028103518791324468, guid: 031299d315e14624a8000a02429474bf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 17060975}
+    - target: {fileID: 6028103518791324468, guid: 031299d315e14624a8000a02429474bf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028103518791324468, guid: 031299d315e14624a8000a02429474bf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1335399181}
+    - target: {fileID: 6028103518791324468, guid: 031299d315e14624a8000a02429474bf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Menu, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6028103518868983121, guid: 031299d315e14624a8000a02429474bf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3999,7 +4015,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6028103519540241933, guid: 031299d315e14624a8000a02429474bf, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6028103519540241933, guid: 031299d315e14624a8000a02429474bf, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4090,16 +4106,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 6871758815353874487, guid: 0b51a2f9826b63d40ba00e1a27a2af89, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6871758816800088075, guid: 0b51a2f9826b63d40ba00e1a27a2af89, type: 3}
-      propertyPath: m_text
-      value: 'Weapon Merchant
-
-        (Press E to Shop)'
-      objectReference: {fileID: 0}
     - target: {fileID: 6871758816930687600, guid: 0b51a2f9826b63d40ba00e1a27a2af89, type: 3}
       propertyPath: axeText
       value: 
@@ -4119,10 +4125,6 @@ PrefabInstance:
     - target: {fileID: 6871758816930687604, guid: 0b51a2f9826b63d40ba00e1a27a2af89, type: 3}
       propertyPath: m_Name
       value: WeaponMerchant
-      objectReference: {fileID: 0}
-    - target: {fileID: 6871758816930687604, guid: 0b51a2f9826b63d40ba00e1a27a2af89, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6871758816930687606, guid: 0b51a2f9826b63d40ba00e1a27a2af89, type: 3}
       propertyPath: m_RootOrder
@@ -4322,7 +4324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8638103605934487524, guid: 0dde3432768fa8d458002535156d98f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.57
+      value: -3.59
       objectReference: {fileID: 0}
     - target: {fileID: 8638103605934487524, guid: 0dde3432768fa8d458002535156d98f5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4372,19 +4374,5 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 8638103606065644089, guid: 0dde3432768fa8d458002535156d98f5, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8638103606208999895, guid: 0dde3432768fa8d458002535156d98f5, type: 3}
-      propertyPath: m_text
-      value: 'Armor Merchant
-
-        (Press E to Shop)'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8638103606208999897, guid: 0dde3432768fa8d458002535156d98f5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0dde3432768fa8d458002535156d98f5, type: 3}
