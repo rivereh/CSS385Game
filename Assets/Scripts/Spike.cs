@@ -19,6 +19,9 @@ public class Spike : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D Collider)
     {
-        Collider.GetComponent<PlayerController>().TakeDamage(25);
+        if (Collider.gameObject.CompareTag("Player"))
+        {
+            Collider.GetComponent<PlayerController>().TakeDamage(25);
+        }
     }
 }
