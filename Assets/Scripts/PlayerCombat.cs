@@ -13,9 +13,13 @@ public class PlayerCombat : MonoBehaviour
     float attackRange = 0.5f;
     Animator anim;
 
+    AudioSource audioSource;
+    public AudioClip hitSound;
+
     void Start()
     {
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -26,6 +30,8 @@ public class PlayerCombat : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 Attack();
+                audioSource.clip = hitSound;
+                audioSource.Play();
                 nextAttackTime = Time.time + 1f / attackRate;
             }
         }

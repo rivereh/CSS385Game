@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform healthbar;
     public TextMeshProUGUI coinsText;
 
+    AudioSource audioSource;
+    public AudioClip jumpSound;
+
+
     // [SerializeField] Transform hitBox;
     // [SerializeField] LayerMask hit_LayerMask;
 
@@ -34,6 +38,7 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         stats = GetComponent<PlayerStats>();
         UpdateAnimatorController();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -52,6 +57,8 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(rb.velocity.y) < 0.001f)
             {
                 rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode2D.Impulse);
+                audioSource.clip = jumpSound;
+                audioSource.Play();
             }
 
             // flip sprite based on whether they are moving left or right

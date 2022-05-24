@@ -8,7 +8,9 @@ using TMPro;
 public class SettingsMenu : MonoBehaviour
 {
     public AudioMixer mainMixer;
+    public AudioMixer sfxMixer;
     public Slider volumeSlider;
+    public Slider sfxSlider;
     public Toggle fullscreenToggle;
     public TMP_Dropdown qualityDropdown;
 
@@ -16,6 +18,9 @@ public class SettingsMenu : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("Volume"))
             setVolume(PlayerPrefs.GetFloat("Volume"));
+
+        if (PlayerPrefs.HasKey("sfxVolume"))
+            setSfxVolume(PlayerPrefs.GetFloat("sfxVolume"));
 
         if (PlayerPrefs.HasKey("IsFullscreen"))
             SetFullscreen(PlayerPrefs.GetInt("IsFullscreen") == 1 ? true : false);
@@ -29,6 +34,13 @@ public class SettingsMenu : MonoBehaviour
         mainMixer.SetFloat("volume", volume);
         PlayerPrefs.SetFloat("Volume", volume);
         volumeSlider.value = volume;
+    }
+
+    public void setSfxVolume(float volume)
+    {
+        sfxMixer.SetFloat("sfxvolume", volume);
+        PlayerPrefs.SetFloat("sfxVolume", volume);
+        sfxSlider.value = volume;
     }
 
     public void SetFullscreen(bool isFullscreen)
