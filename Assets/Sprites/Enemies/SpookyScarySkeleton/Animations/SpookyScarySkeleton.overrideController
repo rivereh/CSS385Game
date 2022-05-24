@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SpookyScarySkeleton
+  m_Controller: {fileID: 9100000, guid: b0ca52906dd9e7a449630934cf667f5f, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: dc4d05ca62c22cc4e95c45b233a314eb, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ab649701a262c254e98408f5bfab016d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 171a386f58e933f43ab8136f54a4c9c3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: dd043afdee52cd7499288ddb99fe7205, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 09cbaf89e4d77034a9109ff7981ae682, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a0564f1691b5b274da8ff4ad3da02c62, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ab6d6d95da0edbb4eae1fcaebf8e1c57, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5379bcb45d631f54faae7d230bed0f8c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0a2b1e1896c24404f9c9d91b9b832b05, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 828d70b649b3b304a8b18054a6a9e477, type: 2}

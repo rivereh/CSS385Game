@@ -66,7 +66,10 @@ public class MenuManager : MonoBehaviour
     public void CloseMenu(Menu menu) {
         menu.Close();
         if (menu.menuName == "settings")
+        {
             Time.timeScale = 1;
+            pausedGame = false;
+        }
     }
 
     public void CloseAllMenus()
