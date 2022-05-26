@@ -10,7 +10,7 @@ public class SafeZoneMusic : MonoBehaviour
 
     void Start()
     {
-        audioSource.clip = safeZoneMusic;
+        audioSource.clip = towerMusic;
         audioSource.Play();
     }
 
