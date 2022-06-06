@@ -31614,7 +31614,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7854539423492223069, guid: 9fc255c462c88494f86260e908451e5f, type: 3}
       propertyPath: coins
-      value: 10000
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7854539423492223069, guid: 9fc255c462c88494f86260e908451e5f, type: 3}
+      propertyPath: weapon
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7854539423492223069, guid: 9fc255c462c88494f86260e908451e5f, type: 3}
+      propertyPath: defence
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fc255c462c88494f86260e908451e5f, type: 3}

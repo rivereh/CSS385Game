@@ -154,6 +154,10 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
         if (Random.value < PlayerStats.instance.stunChance)
         {
             anim.SetTrigger("Hurt");
@@ -162,17 +166,15 @@ public class Enemy : MonoBehaviour
         {
             Flash();
         }
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
     }
 
     void Die()
     {
+        anim.SetBool("Attack", false);
         GameObject coin = Instantiate(coinPrefab, transform.position, Quaternion.identity) as GameObject;
         coin.GetComponent<Coin>().setValue(Random.Range(25, 50));
         anim.SetBool("IsDead", true);
+        anim.SetTrigger("Died");
         GetComponentInChildren<Collider2D>().enabled = false;
         GetComponentInChildren<Rigidbody2D>().isKinematic = true;
         GetComponentInChildren<EnemyAgro>().enabled = false;
