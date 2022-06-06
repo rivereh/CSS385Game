@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class SettingsMenu : MonoBehaviour
 {
@@ -57,5 +58,11 @@ public class SettingsMenu : MonoBehaviour
         QualitySettings.SetQualityLevel(qualityIndex);
         PlayerPrefs.SetInt("QualityIndex", qualityIndex);
         qualityDropdown.value = qualityIndex;
+    }
+
+    public void ResetScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1;
     }
 }

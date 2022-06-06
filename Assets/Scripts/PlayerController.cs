@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     Animator anim;
 
     PlayerStats stats;
+    public GameObject deathText;
 
     void Start()
     {
@@ -174,5 +175,7 @@ public class PlayerController : MonoBehaviour
         dead = true;
         anim.SetTrigger("Die");
         GetComponent<PlayerCombat>().enabled = false;
+        deathText.SetActive(true);
+        gameObject.layer = LayerMask.NameToLayer("Default");
     }
 }
