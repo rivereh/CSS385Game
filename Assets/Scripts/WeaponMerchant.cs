@@ -53,6 +53,7 @@ public class WeaponMerchant : MonoBehaviour
             axeButton.interactable = false;
             PlayerStats.instance.UpdateAnimatorController();
             PlayerStats.instance.SetAttack(30);
+            PlayerStats.instance.stunChance = 0.5f;
         }
     }
 
@@ -66,6 +67,7 @@ public class WeaponMerchant : MonoBehaviour
             scepterButton.interactable = false;
             PlayerStats.instance.UpdateAnimatorController();
             PlayerStats.instance.SetAttack(35);
+            PlayerStats.instance.stunChance = 0.6f;
         }
     }
 }

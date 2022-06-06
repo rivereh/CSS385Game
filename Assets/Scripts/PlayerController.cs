@@ -168,7 +168,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        health -= (damage - (3 * PlayerStats.instance.defence));
         Flash();
         if (health <= 0)
         {

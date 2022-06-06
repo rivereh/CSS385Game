@@ -12,6 +12,8 @@ public class PlayerStats : MonoBehaviour
     [Range(0,4)]
     public int defence = 0;
 
+    public float stunChance = 0.3f;
+
     [HideInInspector] public int attackDamage = 20;
 
     public enum Weapon {Sword, Axe, Scepter};

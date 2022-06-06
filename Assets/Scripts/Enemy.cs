@@ -154,7 +154,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        if (Random.value < 0.5f)
+        if (Random.value < PlayerStats.instance.stunChance)
         {
             anim.SetTrigger("Hurt");
         }
