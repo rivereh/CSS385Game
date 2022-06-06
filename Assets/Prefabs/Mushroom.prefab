@@ -358,6 +358,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   attackRange: 0.32
+  spriteRenderer: {fileID: 1690265990}
+  flashMaterial: {fileID: 2100000, guid: b3fecd6f489e3b444bb587263ca1146e, type: 2}
 --- !u!1 &8577560837695155860
 GameObject:
   m_ObjectHideFlags: 0

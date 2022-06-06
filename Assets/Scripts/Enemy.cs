@@ -32,11 +32,16 @@ public class Enemy : MonoBehaviour
 
     public event System.Action OnDeath;
 
+    public SpriteRenderer spriteRenderer;
+    Material originalMaterial;
+    public Material flashMaterial;
+    Coroutine flashSprite;
 
     void Awake()
     {
         intTimer = timer;
         anim = GetComponent<Animator>();
+        originalMaterial = spriteRenderer.material;
     }
 
     void Start()
@@ -149,7 +154,14 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        anim.SetTrigger("Hurt");
+        if (Random.value < 0.5f)
+        {
+            anim.SetTrigger("Hurt");
+        }
+        else
+        {
+            Flash();
+        }
         if (currentHealth <= 0)
         {
             Die();
@@ -179,5 +191,22 @@ public class Enemy : MonoBehaviour
             return;
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+    void Flash()
+    {
+        if (flashSprite != null)
+        {
+            StopCoroutine(flashSprite);
+        }
+        flashSprite = StartCoroutine(FlashSprite());
+    }
+
+    IEnumerator FlashSprite()
+    {
+        spriteRenderer.material = flashMaterial;
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.material = originalMaterial;
+        flashSprite = null;
     }
 }

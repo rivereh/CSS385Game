@@ -33,6 +33,11 @@ public class PlayerController : MonoBehaviour
     PlayerStats stats;
     public GameObject deathText;
 
+    public SpriteRenderer spriteRenderer;
+    Material originalMaterial;
+    public Material flashMaterial;
+    Coroutine flashSprite;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -40,6 +45,7 @@ public class PlayerController : MonoBehaviour
         stats = GetComponent<PlayerStats>();
         UpdateAnimatorController();
         audioSource = GetComponent<AudioSource>();
+        originalMaterial = spriteRenderer.material;
     }
 
     void Update()
@@ -163,6 +169,7 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+        Flash();
         if (health <= 0)
         {
             health = 0;
@@ -177,5 +184,22 @@ public class PlayerController : MonoBehaviour
         GetComponent<PlayerCombat>().enabled = false;
         deathText.SetActive(true);
         gameObject.layer = LayerMask.NameToLayer("Default");
+    }
+
+    void Flash()
+    {
+        if (flashSprite != null)
+        {
+            StopCoroutine(flashSprite);
+        }
+        flashSprite = StartCoroutine(FlashSprite());
+    }
+
+    IEnumerator FlashSprite()
+    {
+        spriteRenderer.material = flashMaterial;
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.material = originalMaterial;
+        flashSprite = null;
     }
 }
