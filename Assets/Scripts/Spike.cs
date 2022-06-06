@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Spike : MonoBehaviour
 {
+
+    public int damage = 25;
     BoxCollider2D BoxColliderWithTrigger;
     BoxCollider2D BoxColliderNoTrigger;
 
@@ -21,7 +23,7 @@ public class Spike : MonoBehaviour
     {
         if (Collider.gameObject.CompareTag("Player"))
         {
-            Collider.GetComponent<PlayerController>().TakeDamage(25);
+            Collider.GetComponent<PlayerController>().TakeDamage(damage);
         }
     }
 }

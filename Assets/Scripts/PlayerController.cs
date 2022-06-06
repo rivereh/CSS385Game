@@ -121,9 +121,9 @@ public class PlayerController : MonoBehaviour
             // }
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
-                gameObject.layer = 8;
-        if (Input.GetKeyUp(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) && !dead)
+            gameObject.layer = 8;
+        if (Input.GetKeyUp(KeyCode.S) && !dead)
             gameObject.layer = 9;
 
         if (health > 100)
@@ -138,6 +138,9 @@ public class PlayerController : MonoBehaviour
             mana = 100;
 
         UpdateUI();
+
+        if (dead)
+            gameObject.layer = 11;
     }
 
     void UpdateUI()
@@ -168,7 +171,13 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= (damage - (3 * PlayerStats.instance.defence));
+        if (dead)
+            return;
+        float damageToDeal = damage - (3 * PlayerStats.instance.defence);
+        if (damageToDeal > 0)
+        {
+            health -= (damage - (3 * PlayerStats.instance.defence));
+        }
         Flash();
         if (health <= 0)
         {

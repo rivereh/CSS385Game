@@ -176,6 +176,7 @@ public class Enemy : MonoBehaviour
         anim.SetBool("IsDead", true);
         anim.SetTrigger("Died");
         GetComponentInChildren<Collider2D>().enabled = false;
+        GetComponentInChildren<CircleCollider2D>().enabled = false;
         GetComponentInChildren<Rigidbody2D>().isKinematic = true;
         GetComponentInChildren<EnemyAgro>().enabled = false;
         this.enabled = false;

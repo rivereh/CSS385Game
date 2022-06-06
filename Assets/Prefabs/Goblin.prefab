@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2072921188123913726}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HitPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7543874235794653481}
   - component: {fileID: 7244607233846250555}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,6 +112,67 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6700617490678331403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4232252557047720758}
+  - component: {fileID: 4745439715202940567}
+  - component: {fileID: 3077961771240262487}
+  m_Layer: 7
+  m_Name: BounceBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4232252557047720758
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6700617490678331403}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8577560837335643054}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &4745439715202940567
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6700617490678331403}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: d6ada6242de87c04a82fc5269c5b914c, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.06376362, y: 0.16079852}
+  serializedVersion: 2
+  m_Radius: 0.28922704
+--- !u!114 &3077961771240262487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6700617490678331403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c5c53e43d9a934aad43f45d0fd13e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
 --- !u!1 &8577560837150003284
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,7 +184,7 @@ GameObject:
   - component: {fileID: 8577560837150003291}
   - component: {fileID: 8577560837150003290}
   - component: {fileID: 8577560837150003285}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Agro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +254,7 @@ GameObject:
   - component: {fileID: 8577560837167275749}
   - component: {fileID: 8577560837167275754}
   - component: {fileID: 8577560837167275755}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TriggerArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +325,7 @@ GameObject:
   - component: {fileID: 8577560837335643049}
   - component: {fileID: 8577560837335643048}
   - component: {fileID: 8577560837335643055}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Goblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,6 +348,7 @@ Transform:
   - {fileID: 8577560837150003291}
   - {fileID: 2072921188123913726}
   - {fileID: 7543874235794653481}
+  - {fileID: 4232252557047720758}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -342,8 +404,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83b828e43903e640af9fd0f6689c214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  damageAmount: 25
+  maxHealth: 150
+  damageAmount: 10
   currentHealth: 100
   attackDistance: 0.7
   moveSpeed: 2
@@ -356,7 +418,7 @@ MonoBehaviour:
   attackPoint: {fileID: 2072921188123913726}
   playerLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 768
   attackRange: 0.32
   spriteRenderer: {fileID: 7244607233846250555}
   flashMaterial: {fileID: 2100000, guid: b3fecd6f489e3b444bb587263ca1146e, type: 2}
