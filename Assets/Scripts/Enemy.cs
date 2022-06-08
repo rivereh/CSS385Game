@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
     bool coolDown;
     float intTimer;
 
+    bool isDead = false;
 
     public Transform attackPoint;
     public LayerMask playerLayer;
@@ -153,10 +154,14 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (isDead)
+            return;
+
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
             Die();
+            isDead = true;
         }
         if (Random.value < PlayerStats.instance.stunChance)
         {
